@@ -1,0 +1,190 @@
+/* 全体の外観設定 */
+html {
+	background-color: #F0F0F0;
+	font-family: sans-serif;
+}
+
+/* iOS Safariの下部のバーの挙動を固定 */
+html,body {
+	height: 100%;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+/* Safariのテキスト選択メニューを無効化 */
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+/* iOSデフォルトのボタンのスタイルを無効化 */
+button {
+	-webkit-appearance: none;
+}
+
+/* メニューリストのスタイル */
+.list {
+	padding: 10px;
+	margin-bottom: 64px;
+}
+.list ul {
+	background: #FFF;
+	border-radius: 4px;
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+	overflow: hidden;
+}
+
+.list li {
+	line-height: 48px;
+	height: 48px;
+	display: block;
+	box-shadow: 0px 1px 0px #F0F0F0;
+	color: #333;
+	text-decoration: none;
+	padding: 0px 16px;
+	transition: all 0.05s ease-in-out;
+	position: relative;
+}
+
+.list li.active {
+	background-color: #ffb300;
+	color: #FFF;
+}
+
+.list li:after {
+	content: "";
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	height: 4px;
+	background-color: #FFF;
+	width: 0%;
+	transition: all 0.1s linear;
+}
+
+.list li.active:after {
+	width: 100%;
+	transition: all 1s linear;
+}
+
+/*
+・動画プレイヤーのアスペクト比を固定
+・同じサイズの余白を画面サイズに応じて生成
+*/
+
+.wrapper {position: fixed;z-index: 1;}
+.spacer {position: relative}
+
+.wrapper,
+.spacer {
+    top: 0px;
+    width: 100%;
+}
+.wrapper:before,
+.spacer:before {
+    content:"";
+    display: block;
+    padding-top: 56.25%;
+}
+.wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 動画プレイヤーの外観 */
+.wrapper {
+	background-color: #000;
+}
+
+/* Clutch操作パネルの外観 */
+#clutch_box {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	height: 64px;
+}
+
+#clutch_box #clutch {
+	display: block;
+	margin: 8px auto;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background: #FFF;
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+	text-align: center;
+	line-height: 48px;
+	font-size: 24px;
+	color: #ffb300;
+	text-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+}
+
+#play_box {
+	position: fixed;
+	width: 100%;
+	height: 64px;
+	transition: all 0.2s ease-in-out;
+	bottom: 0px;
+}
+
+#play_box.active {
+	bottom: 72px;
+}
+
+#play {
+	position: relative;
+	width: 48px;
+	height: 48px;
+	margin: 8px auto;
+	border-radius: 50%;
+	background: #FFF;
+	box-shadow: 0px 0px 0px rgba(0,0,0,0.3);
+	line-height: 48px;
+	font-size: 24px;
+	color: #ffb300;
+	text-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+	border: 0px;
+	text-indent: -12px;
+	display: block;
+	transition: all 0.2s ease-in-out;
+}
+
+#play_box.active #play {
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+	width: 64px;
+	height: 64px;
+	margin: 0px auto;
+}
+
+#play:after {
+	display: block;
+	content: "";
+	position: absolute;
+	top: 15px;
+	left: 21px;
+	right: 0px;
+	bottom: 0px;
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-left: 10px solid #666;
+	transition: all 0.2s ease-in-out;
+}
+
+#play_box.active #play:after {
+	top: 19px;
+	left: 28px;
+	border: 14px solid transparent;
+	border-left: 14px solid #666;	
+}
+
+/* デバッグ数値パネル */
+#debug {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	color: red;
+}
